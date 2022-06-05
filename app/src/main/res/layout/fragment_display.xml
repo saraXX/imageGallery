@@ -3,16 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <!-- TODO 4.4 SETUP LAYOUT :
+            CREATE THIS LAYOUT WILL DISPLAY A SINGLE
+            IMAGE IN THE FULL SCREEN WITH AN ADDITIONAL BUTTON    -->
     <Button
+        android:id="@+id/desBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:drawable/ic_menu_more"
         android:layout_gravity="center"
-        android:id="@+id/desBtn"
-        />
-<ImageButton
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/imgHolderView"/>
+        android:scaleType="fitXY"
+        android:background="?android:attr/actionModeFindDrawable" />
+
+    <ImageButton
+        android:id="@+id/imgHolderView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

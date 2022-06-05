@@ -15,36 +15,40 @@ import androidx.fragment.app.FragmentManager;
 
 import java.util.ArrayList;
 import java.util.List;
+//  TODO 6 CREATE A CUSTOM ADAPTER FOR THE GRID VIEW
 
 public class GridAdapter extends BaseAdapter {
     Context context;
-    List<Uri> uris;
-    LayoutInflater inflter;
     String TAG;
+    LayoutInflater inflater;
+    List<Uri> imageUrisList;
     List<ImagesGallery> imagesGalleryList;
     FragmentManager fragmentManager;
 
+// only get the context and the list from GridFragment
     public GridAdapter(Context context, List<ImagesGallery> imagesGalleryList) {
         TAG = "GridAdapter";
         this.context = context;
         this.imagesGalleryList = imagesGalleryList;
-        uris = getThumpsUris(imagesGalleryList);
-        this.inflter = (LayoutInflater.from(context));
+//        clone images uri in a separate list
+        imageUrisList = getThumpsUris(imagesGalleryList);
+        this.inflater = (LayoutInflater.from(context));
+//        initializing a fragment manger is differ in ordinary class
         fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
     }
 
-
+// not important
     @Override
     public int getCount() {
-        int count=uris.size(); //counts the total number of elements from the arrayList
+        int count=imageUrisList.size(); //counts the total number of elements from the arrayList
         return count;//returns the total count to adapter
     }
-
+    // not important
     @Override
     public Object getItem(int i) {
         return imagesGalleryList.get(i);
     }
-
+    // not important
     @Override
     public long getItemId(int i) {
         return i;
@@ -52,23 +56,16 @@ public class GridAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = inflter.inflate(R.layout.item_layout, null);//set layout for displaying items
-        ImageView icon = (ImageView) view.findViewById(R.id.thumpImgView);//get id for image view
-        icon.setImageURI(uris.get(i));//set image of the item’s
+        view = inflater.inflate(R.layout.item_layout, null);//set layout for displaying a single item in the grid
+        ImageView icon = (ImageView) view.findViewById(R.id.thumpImgView);//get id for the thump image view
+        icon.setImageURI(imageUrisList.get(i));//set image thump of the item’s
 
-
-
+//      ones item clicked it will trigger fragment manger to start another fragment
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.fragment_container_view, DisplayFragment.class, sendUri(uris.get(i)))
-//                        .setReorderingAllowed(true)
-//                        .addToBackStack("name") // name can be null
-//                        .commit();
-
                 fragmentManager.beginTransaction()
+//                        todo 6.3 make sure to send a bundle too of a specific item (i)
                         .replace(R.id.fragment_container_view, DisplayFragment.class, sendItem(imagesGalleryList.get(i)))
                         .setReorderingAllowed(true)
                         .addToBackStack("name") // name can be null
@@ -78,33 +75,29 @@ public class GridAdapter extends BaseAdapter {
         return view;
     }
 
-
-    public List<Uri> getThumpsUris(List<ImagesGallery> imagesGalleries){
-        List<Uri> uris = new ArrayList<>();
-        ImagesGallery list;
-        for(int i=0; i<imagesGalleries.size();i++){
-            Log.d(TAG, "getThumps:imagesGalleries.get(i) "+imagesGalleries.get(i).getName());
-            list=imagesGalleries.get(i);
-            uris.add(list.getUri());
+// todo 6.1 clone images uri in a separate list
+//    args :  List<ImagesGallery> - received from GridFragment
+//    return : List<Uri> -  to retrieve image easily in a grid view
+    public List<Uri> getThumpsUris(List<ImagesGallery> ImagesGalleryList){
+        List<Uri> urisList = new ArrayList<>();
+        ImagesGallery img;
+        for(int i=0; i<ImagesGalleryList.size();i++){
+            Log.d(TAG, "getThumps:imagesGalleries.get(i) "+ImagesGalleryList.get(i).getName());
+            img=ImagesGalleryList.get(i);
+            urisList.add(img.getUri());
         }
-        return uris;
+        return urisList;
     }
-
-    public Bundle sendUri(Uri uri){
-        Bundle bundle = new Bundle();
-        String s = uri.toString();
-        bundle.putString("image",s);
-        return bundle;
-
-    }
-
+// todo 6.2 convert imagesGallery object to a bundle to be shared between fragments
+//    args :  ImagesGallery - by passing one object from imagesGalleryList.get(i)
+//    return : Bundle -  contain many String displaying image information
     public Bundle sendItem(ImagesGallery imagesGallery){
         Bundle bundle = new Bundle();
         String name = imagesGallery.getName();
         String date = imagesGallery.getDate();
         String type = imagesGallery.getType();
         String uri = imagesGallery.getUri().toString();
-        String high = String.valueOf(imagesGallery.getHigh());
+// combine both height and width in the same line
         String dim = String.valueOf(imagesGallery.getWidth()+"X"+imagesGallery.getHigh());
         String size = String.valueOf(imagesGallery.getSize()+"KB");
 

@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-<!--    TODO 2 CREATE THIS LAYOUT WHICH REPRESENT A SINGLE ITEM IN THE LIST-->
+
+    <!-- TODO 4.3 SETUP LAYOUT :
+            CREATE THIS LAYOUT WHICH REPRESENT A SINGLE ITEM IN THE GRID VIEW   -->
     <ImageView
         android:id="@+id/thumpImgView"
         android:layout_width="100dp"

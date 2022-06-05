@@ -1,11 +1,17 @@
 package android.guide.imagegallery;
-// TODO 1 ADD DEPENDENCIES {FRAGMENTS, ANDROID X} done
-// TODO 2 ADD PERMISSIONS {READ EXTERNAL STORAGE} done
-// TODO 3 CREATE IMAGE CLASS done
-// TODO 4 CREATE A CUSTOM ADAPTER FOR GRID VIEW
-// TODO 5 SETUP LAYOUT {LIST VIEW AND FRAGMENT LAYOUT}
-// TODO 6 ACCESS EXTERNAL MEMORY
-// TODO 7 LINK EVERYTHING IN THE MainActivity
+
+// TODO 0 READ STEPS :
+//  1 ADD FRAGMENT DEPENDENCIES
+//  2 ADD PERMISSIONS {READ EXTERNAL STORAGE}
+//  3 CREATE ImagesGallery CLASS
+//      the class attr : uri, name, size ..etc.
+//  4 SETUP LAYOUTS
+//  5 CREATE A SIBLING LAYOUTS
+//          A - GridFragment.
+//          B - DisplayFragment.
+//          C - DetailsFragment.
+//  6 CREATE A CUSTOM ADAPTER FOR GRID VIEW
+
 
 
 
@@ -26,17 +32,19 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     int CODE;
     String TAG;
-    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//      any text for log tab
         TAG = "msg";
+//      could be any number.
         CODE =1;
 
+//      request permission
         getReadPermission();
-
+//      start showing the GridFragment by starting the MainActivity()
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment_container_view, GridFragment.class, null)
@@ -45,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
+//    TODO 2.2 ACCESS EXTERNAL MEMORY BY OVERRIDE onRequestPermissionsResult()
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -59,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //    TODO 2.3 CHECK THE PERMISSION
     public void getReadPermission(){
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
 

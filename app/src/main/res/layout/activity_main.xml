@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+<!--    TODO 4.1 SETUP LAYOUT :
+            THE FRAGMENT CONTAINER (PARENT)   -->
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
         android:layout_width="match_parent"

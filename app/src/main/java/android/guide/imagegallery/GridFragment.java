@@ -26,10 +26,11 @@ import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
+// TODO 5 : CREATE THE SIBLING FRAGMENTS {
+//  5.1 GridFragment
 
 public class GridFragment extends Fragment {
     GridView gridView;
-    String TAG;
     List<ImagesGallery> imageList;
     GridAdapter customAdapter;
 
@@ -38,9 +39,11 @@ public class GridFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//      todo 5.1.1 create an array from ImagesGallery class
         imageList= new ArrayList<ImagesGallery>();
+//      todo 5.1.2 fill the list with an imagesGallery objects.
         imageList= myImagelist();
-
+//      todo 5.1.3 call the adapter
         customAdapter = new GridAdapter(getContext(), imageList);
     }
 
@@ -49,11 +52,14 @@ public class GridFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_grid, container, false);
         gridView = (GridView) view.findViewById(R.id.gridView);
+//        set the adapter
         gridView.setAdapter(customAdapter);
         return view;
     }
-
-
+//    this methode show how to query images information that stored in the external memory storage
+//    like the /DCMI /PICTURE /... directories.
+//    return : List<ImagesGallery> object
+//    details in : https://developer.android.com/training/data-storage/shared/media#query-collection
     public List<ImagesGallery> myImagelist(){
         List<ImagesGallery> imageList = new ArrayList<ImagesGallery>();
         Uri collection;
@@ -73,6 +79,8 @@ public class GridFragment extends Fragment {
                 MediaStore.Images.Media.MIME_TYPE,
                 MediaStore.Images.Media.SIZE
         };
+//        A Selection statement to sort the results
+
 //        String selection = MediaStore.Images.Media.MIME_TYPE +
 //                " = ?";
 //        String[] selectionArgs = new String[]{

@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <!-- TODO 4.5 SETUP LAYOUT :
+            AN EMPTY LAYOUT CONTAIN ONLY A TEXT
+            VIEW TO REPRESENT THE IMAGE DETAILS    -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

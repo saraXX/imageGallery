@@ -1,38 +1,36 @@
 package android.guide.imagegallery;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+// TODO 5 : CREATE THE SIBLING FRAGMENTS {
+//  5.3 DetailsFragment
 
 public class DetailsFragment extends Fragment {
     Bundle bundle;
-    String imageName;
+    String information;
     TextView textView;
 
     public DetailsFragment() {
         super(R.layout.fragment_details);
     }
 
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+//       todo 5.3.1 make sure to receive the bundle from previous fragment
+//          which is DisplayFragment
+//          the bundle contain several Strings specify the image attributes
         bundle = getArguments();
         super.onCreate(savedInstanceState);
-
     }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,11 +38,16 @@ public class DetailsFragment extends Fragment {
 
         textView = (TextView) view.findViewById(R.id.desTextView);
 
+//      todo 5.3.2 convert bundle to a String
+        information = bundle.getString("image name")+"\n"
+                +bundle.getString("image data")+"\n"
+                +bundle.getString("image type")+"\n"
+                +bundle.getString("image uri")+"\n"
+                +bundle.getString("image dim")+"\n"
+                +bundle.getString("image size");
 
-        imageName = bundle.getString("image name");
-        Log.d("TAG", "onCreateView: "+imageName);
-        textView.setText(imageName);
-
+        Log.d("TAG", "onCreateView: "+ information);
+        textView.setText(information);
 
         return view;
     }

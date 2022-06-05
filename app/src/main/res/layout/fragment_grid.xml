@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
+    <!--    TODO 4.2 SETUP LAYOUT :
+                CREATE THE GRID VIEW WHICH WILL CARRY ALL IMAGES   -->
 
     <GridView
         android:id="@+id/gridView"

@@ -14,7 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-
+// TODO 5 : CREATE THE SIBLING FRAGMENTS {
+//  5.2 DisplayFragment
 public class DisplayFragment extends Fragment {
     ImageView imageView;
     Button buttonView;
@@ -25,9 +26,11 @@ public class DisplayFragment extends Fragment {
         super(R.layout.fragment_display);
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+//       todo 5.2.1 make sure to receive the bundle from previous fragment
+//        which is GridFragment
+//        the bundle contain several Strings specify the image attributes
         bundle = getArguments();
         super.onCreate(savedInstanceState);
     }
@@ -39,12 +42,14 @@ public class DisplayFragment extends Fragment {
         imageView = (ImageView) view.findViewById(R.id.imgHolderView);
         buttonView = (Button) view.findViewById(R.id.desBtn);
 
-
+//       todo 5.2.2 retrieve bundle to a String
         imagePath = bundle.getString("image uri");
+//       todo 5.2.3 convert a String to an URI
         myUri = Uri.parse(imagePath);
+//       todo 5.2.4 set fill image view with an image using the uri
         imageView.setImageURI(myUri);
 
-
+// clicking on the button will show the DetailsFragment
         buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

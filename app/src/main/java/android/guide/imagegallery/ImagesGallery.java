@@ -1,7 +1,7 @@
 package android.guide.imagegallery;
 
 import android.net.Uri;
-
+// TODO 3 CREATE IMAGE CLASS
 public class ImagesGallery {
     private final Uri uri;
     private final String name;
@@ -12,6 +12,8 @@ public class ImagesGallery {
     private final int size;
 
     public ImagesGallery(Uri uri, String name, int width, int high, String date, String type, int size) {
+//        URI IS THE LOCATION OF THE IMAGE IN THE EXTERNAL MEMORY STORAGE, WE CALL THE IMAGE TO BE
+//          DISPLAYED IN the IMAGE VIEW USING .setImageUri()
         this.uri = uri;
         this.name = name;
         this.width = width;
