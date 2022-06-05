@@ -1,17 +1,21 @@
 package android.guide.imagegallery;
 
-// TODO 0 READ STEPS :
-//  1 ADD FRAGMENT DEPENDENCIES
-//  2 ADD PERMISSIONS {READ EXTERNAL STORAGE}
-//  3 CREATE ImagesGallery CLASS
-//      the class attr : uri, name, size ..etc.
-//  4 SETUP LAYOUTS
-//  5 CREATE A SIBLING LAYOUTS
-//          A - GridFragment.
-//          B - DisplayFragment.
-//          C - DetailsFragment.
-//  6 CREATE A CUSTOM ADAPTER FOR GRID VIEW
-
+/* TODO 0 READ STEPS :
+      1 ADD FRAGMENT DEPENDENCIES
+      2 ADD PERMISSIONS {READ EXTERNAL STORAGE}
+      3 CREATE ImagesGallery CLASS
+          the class attr : uri, name, size ..etc.
+      4 SETUP LAYOUTS
+      5 CREATE A SIBLING LAYOUTS
+              A - GridFragment.
+              B - DisplayFragment.
+              C - DetailsFragment.
+      6 CREATE A CUSTOM ADAPTER FOR GRID VIEW
+      .
+      IMPORTANT REFERENCE FOR THIS PROJECT:
+      query media contents : https://developer.android.com/training/data-storage/shared/media#query-collection
+      create a custom adapter for gridview : https://abhiandroid.com/ui/baseadapter-tutorial-example.html
+*/
 
 
 
